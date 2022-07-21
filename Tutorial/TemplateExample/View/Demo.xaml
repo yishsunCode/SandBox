@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Tutorial.TemplateExample.View.Demo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tutorial.TemplateExample.View"
+             xmlns:vm="clr-namespace:Tutorial.TemplateExample.ViewModel"
+             xmlns:att="clr-namespace:Tutorial.TemplateExample.Xaml"
+             d:DataContext="{d:DesignInstance vm:DemoViewModel, IsDesignTimeCreatable=False}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/TemplateExample/Xaml/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        <!--<Style TargetType="TextBox" x:Key="keyBlueBoxStyle">
+            <Setter Property="Foreground" Value="Blue"/>
+            <Setter Property="FontSize" Value="22"/>
+        </Style>
+        <Style TargetType="TextBox"
+               x:Key="greenBox"
+               BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Foreground" Value="Green"/>
+        </Style>-->
+        
+    </UserControl.Resources>
+    <StackPanel>
+        <CheckBox FontSize="8" Content="f8" att:AttachedProperty.CheckBoxSize="42"/>
+        <CheckBox FontSize="16" Content="f16"/>
+        <CheckBox FontSize="32" Content="f32" att:AttachedProperty.CheckBoxSize="8"/>
+    </StackPanel>
+</UserControl>
