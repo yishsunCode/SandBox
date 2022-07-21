@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="WPFTest.Test.BindingTutorial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFTest.Test"
+             d:DataContext="{d:DesignInstance local:IViewModel, IsDesignTimeCreatable=False}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel>
+        <StackPanel Orientation="Vertical" Background="LightPink"
+                    DockPanel.Dock="Top">
+            <HeaderedContentControl Header="Name">
+                <TextBox Text="{Binding Path=Name}"/>
+            </HeaderedContentControl>
+            <HeaderedContentControl Header="$$$">
+                <Slider Minimum="1" Maximum="100" Value="{Binding Path=Money}"
+                        />
+            </HeaderedContentControl>
+            <CheckBox Content="IsMale" IsChecked="{Binding Path=IsMale}"/>
+            <Button Content="Add" Command="{Binding Path=AddCommand}"/>
+        </StackPanel>
+        <ListBox ItemsSource="{Binding Path=Rows}">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type local:IRow}">
+                    <UniformGrid Rows="1">
+                        <TextBlock Background="Aqua" Text="{Binding Path=Money}"/>
+                        <TextBlock Background="Yellow" Text="{Binding Path=IsMale}"/>
+                        <TextBlock Background="LightGray" Text="{Binding Path=Name}"/>
+                    </UniformGrid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+    <!--<Viewbox>
+        <StackPanel>
+            <TextBox IsReadOnly="True" Text="{Binding Path=, Mode=OneWay}"/>
+            <CheckBox Content="IsMale" IsChecked="{Binding Path=IsMale, Mode=OneWay}"/>
+            <Button Content="Change" Command="{Binding Path=Command}"/>
+        </StackPanel>
+    </Viewbox>-->
+</UserControl>
